@@ -1,0 +1,44 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    username: root
+    password: root
+    url:
+      jdbc:mysql://localhost:3306/search_engine?useSSL=false&requireSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+  jpa:
+   properties:
+     hibernate:
+       dialect: org.hibernate.dialect.MySQL8Dialect
+   hibernate:
+#     ddl-auto: validate
+     ddl-auto: create
+#     ddl-auto: create-drop
+   show-sql: true
+#   show-sql: false
+
+# example values
+
+indexing-settings:
+  sites:
+#    - url: https://www.skillbox.ru
+#      name: Skillbox
+    - url: https://www.playback.ru
+      name: PlayBack.Ru
+    - url: https://www.svetlovka.ru
+      name: Светловка
+#    - url: https://dombulgakova.ru
+#      name: Дом Булгакова
+
+user-settings:
+#  userAgent: Mozilla/5.0 (Windows; U; WindowsNT 5.1; en-US; rv1.8.1.6) Gecko/20070725 Firefox/2.0.0.6
+  userAgent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36
+#  referrer: http://www.google.com
+  referrer: https://www.gwozdeck.ru/
+
+snippet:
+  length: 500
+  indent: 50
+
+search:
+  frequency-limit: 50
