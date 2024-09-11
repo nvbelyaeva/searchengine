@@ -70,7 +70,13 @@ public class TextAnalyzer {
         String textRu = text.replaceAll("[^А-Яа-яЁё]+", " ").replaceAll("[\\s]{2,}", " ");
         String[] words = textRu.split(" ");
         Set<String> replaceWordsSet = Arrays.stream(words).filter(word -> {
-            List<String> wordNormalForms = luceneMorph.getNormalForms(word.toLowerCase());
+            List<String> wordNormalForms;
+            try {
+                wordNormalForms = luceneMorph.getNormalForms(word.toLowerCase());
+            }
+            catch(Exception ex) {
+                return false;
+            }
             if (wordNormalForms == null || wordNormalForms.isEmpty()) {
                 return false;
             }
